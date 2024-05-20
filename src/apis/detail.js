@@ -25,3 +25,17 @@ export function getGoodsDetail(id){
         }
     )
 }
+
+export function getHotGoodsAPI({id,type,limit = 3}){
+
+    return request({
+
+        url:"/goods/hot",
+        params:{
+
+            id,
+            type,
+            limit
+        }
+    })
+}

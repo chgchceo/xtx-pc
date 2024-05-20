@@ -4,7 +4,7 @@
 
 <script setup>
 
-
+import DetailHot from "./components/DetailHot.vue"
 import { getGoodsDetail } from '@/apis/detail';
 import { ref,onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -21,6 +21,10 @@ const getDetail = async (id)=>{
 
 onMounted(()=> getDetail(route.params.id))
 
+const skuChange = (sku)=>{
+
+  console.log(sku);
+}
 
 </script>
 
@@ -43,6 +47,7 @@ onMounted(()=> getDetail(route.params.id))
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
+              <XtxImageView :imageList="goodsDetail.mainPictures"/>
 
               <!-- 统计数量 -->
               <ul class="goods-sales">
@@ -92,7 +97,7 @@ onMounted(()=> getDetail(route.params.id))
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSku :goods="goodsDetail" @change="skuChange"/>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->
@@ -128,6 +133,9 @@ onMounted(()=> getDetail(route.params.id))
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
+
+              <DetailHot  :hotType = '1' />
+              <DetailHot  :hotType = '2' />
 
             </div>
           </div>
