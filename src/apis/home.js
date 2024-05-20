@@ -1,0 +1,46 @@
+
+import  httpInstance  from '@/utils/http'
+export function getBannerAPI (params = {}){
+  
+  const {distributionSite = "1"} = params
+  return httpInstance({
+    url:'home/banner',
+    params:{
+
+      distributionSite
+    }
+  })
+}
+
+
+/**
+ * @description: 获取新鲜好物
+ * @param {*}
+ * @return {*}
+ */
+export function getNewAPI (){
+    return httpInstance({
+      url:'home/new'
+    })
+  }
+
+
+/**
+ * @description: 获取人气推荐
+ * @param {*}
+ * @return {*}
+//  */
+
+export function getHotAPI (){
+    return  httpInstance({
+        url:'home/hot'
+    })
+  }
+
+
+  export const getGoodsAPI = () => {
+    return httpInstance({
+      url: '/home/goods'
+    })
+  }
+
