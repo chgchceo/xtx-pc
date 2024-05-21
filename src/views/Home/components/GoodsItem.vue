@@ -12,7 +12,8 @@ defineProps({
 <ul class="goods-list2">
           <li v-for="good in goods" :key="good.id">
             <RouterLink to="/" class="goods-item">
-              <img :src="good.picture" alt="" />
+              <!-- <img :src="good.picture" alt="" /> -->
+              <img v-img-lazy="good.picture" alt="">
               <p class="name ellipsis">{{ good.name }}</p>
               <p class="desc ellipsis">{{ good.desc }}</p>
               <p class="price">&yen;{{ good.price }}</p>

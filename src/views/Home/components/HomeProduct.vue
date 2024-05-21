@@ -18,7 +18,8 @@ onMounted( ()=> getGoods() )
     <HomePanel :title="cate.name" v-for="cate in goodsProduct" :key="cate.id">
       <div class="box">
         <RouterLink class="cover" to="/">
-          <img :src="cate.picture" />
+          <!-- <img :src="cate.picture" /> -->
+          <img v-img-lazy="cate.picture" alt="">
           <strong class="label">
             <span>{{ cate.name }}馆</span>
             <span>{{ cate.saleInfo }}</span>
