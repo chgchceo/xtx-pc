@@ -25,7 +25,7 @@ httpInstance.interceptors.request.use(config =>{
 httpInstance.interceptors.response.use(res => res.data ,e=>{
 
     //错误统一处理
-    ElMessage({type:'warning',message:e.response.data.message})
+    ElMessage({type:'warning',message:e.response?.data?.message})
 
     //401 token失效处理
     //清除用户信息，跳转到登录页面
