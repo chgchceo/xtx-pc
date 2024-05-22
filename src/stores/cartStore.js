@@ -2,7 +2,7 @@
 import {defineStore} from 'pinia'
 import { computed, ref } from 'vue'
 import {useUserStore} from "./userStore"
-import { addCartAPI,getCartListAPI} from "@/apis/cart"
+import { addCartAPI,getCartListAPI,delCartAPI} from "@/apis/cart"
  
 export const useCartStore = defineStore('cart',()=>{
 
@@ -41,7 +41,16 @@ export const useCartStore = defineStore('cart',()=>{
     }
   
     //从购物车中删除商品
-    const delCart = (skuId)=>{
+    const delCart = async (skuId)=>{
+
+      if(isLogin.value){
+
+       await delCartAPI([skuId])
+       //获取最新购物车列表
+       const res = await getCartListAPI()
+       cartList.value = res.result
+
+      }else{
 
       //方法一
       // const idx = cartList.value.findIndex((item) => item.skuId === skuId)
@@ -49,6 +58,7 @@ export const useCartStore = defineStore('cart',()=>{
 
       //方法二
       cartList.value = cartList.value.filter(item => item.skuId !== skuId)
+      }
 
     }
 
