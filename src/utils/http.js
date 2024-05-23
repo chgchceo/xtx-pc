@@ -29,7 +29,7 @@ httpInstance.interceptors.response.use(res => res.data ,e=>{
 
     //401 token失效处理
     //清除用户信息，跳转到登录页面
-    if(e.response.status === 401){
+    if(e?.response?.status === 401){
         const userStore = useUserStore()
         userStore.clearUserInfo()
         router.push('/login')

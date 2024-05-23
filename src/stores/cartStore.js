@@ -23,8 +23,7 @@ export const useCartStore = defineStore('cart',()=>{
         await addCartAPI({skuId,count})
 
         //获取最新购物车列表
-        const res = await getCartListAPI()
-        cartList.value = res.result
+        upDateNewList()
 
       }else{
 
@@ -39,6 +38,13 @@ export const useCartStore = defineStore('cart',()=>{
         }
       }
     }
+
+    //刷新页面数据
+    const upDateNewList = async ()=>{
+      const res = await getCartListAPI()
+      cartList.value = res.result
+
+    }
   
     //从购物车中删除商品
     const delCart = async (skuId)=>{
@@ -47,8 +53,7 @@ export const useCartStore = defineStore('cart',()=>{
 
        await delCartAPI([skuId])
        //获取最新购物车列表
-       const res = await getCartListAPI()
-       cartList.value = res.result
+       upDateNewList()
 
       }else{
 
@@ -110,6 +115,11 @@ export const useCartStore = defineStore('cart',()=>{
       cartList.value.forEach((item) => item.selected = selected)
 
     }
+    //清除购物车
+    const clearCart = ()=>{
+
+      cartList.value = []
+    }
 
     return {
   
@@ -120,9 +130,11 @@ export const useCartStore = defineStore('cart',()=>{
       selectedCount,
       selectedPrice,
       addCount,
+      clearCart,
       delCart,
       singleCheck,
-      allCheck
+      allCheck,
+      upDateNewList
     }
 },{
 
