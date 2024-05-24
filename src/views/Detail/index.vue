@@ -113,8 +113,10 @@ const cartButtAc = ()=>{
               <p class="g-name"> {{ goodsDetail.name }} </p>
               <p class="g-desc">{{ goodsDetail.desc }} </p>
               <p class="g-price">
-                <span>{{ goodsDetail.oldPrice }}</span>
+                
                 <span> {{ goodsDetail.price }}</span>
+                <span>{{ goodsDetail.oldPrice }}</span>
+                
               </p>
               <div class="g-service">
                 <dl>

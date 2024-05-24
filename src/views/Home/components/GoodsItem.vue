@@ -11,7 +11,7 @@ defineProps({
 
 <ul class="goods-list2">
           <li v-for="good in goods" :key="good.id">
-            <RouterLink to="/" class="goods-item">
+            <RouterLink :to="`/detail/${good.id}`" class="goods-item">
               <!-- <img :src="good.picture" alt="" /> -->
               <img v-img-lazy="good.picture" alt="">
               <p class="name ellipsis">{{ good.name }}</p>
@@ -33,7 +33,7 @@ defineProps({
       flex-wrap: wrap;
 
       li {
-        width: 235px;
+        width: 230px;
         height: 300px;
         margin-right: 10px;
         margin-bottom: 10px;
